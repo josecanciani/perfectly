@@ -19,6 +19,22 @@ abstract class OperatorGroup extends \ArrayObject implements Term {
         return in_array($string, [AndGroup::TOKEN,  OrGroup::TOKEN]);
     }
 
+    function __toString() {
+        return $this->get();
+    }
+
+    /**
+    * @return string An optimized string version of this boolean logic group
+    */
+    function get() {
+        $childs = $this->optimize();
+        $strings = $this->getStrings($childs);
+        return implode(' ' . $this->getOperator() . ' ', array_unique($strings));
+    }
+
+    /**
+    * @return Term[] A list of optimized Terms
+    */
     function optimize() {
         $childs = $this->flat();
         $theOthers = [];
@@ -57,12 +73,6 @@ abstract class OperatorGroup extends \ArrayObject implements Term {
         }
     }
 
-    function get() {
-        $childs = $this->optimize();
-        $strings = $this->getStrings($childs);
-        return implode(' ' . $this->getOperator() . ' ', array_unique($strings));
-    }
-
     private function flat() {
         $childs = [];
         foreach ($this as $child) {
@@ -87,9 +97,5 @@ abstract class OperatorGroup extends \ArrayObject implements Term {
             }
         }
         return $strings;
-    }
-
-    function __toString() {
-        return $this->get();
     }
 }

@@ -6,17 +6,26 @@ class Parser {
     const MAX_TERMS_PER_GROUP = 20;
     const TERM_REGEXP = '/([a-zA-Z0-9-_]+)(\s|\(|\))?(.*)?$/';
 
-    function parse($logicString) {
-        if (!is_string($logicString) || !$logicString) {
+    /**
+    * @param string $logic A boolean expression text
+    * @return Term
+    */
+    function parse($logic) {
+        if (!is_string($logic) || !$logic) {
             throw new \Exception('invalidStringTerm');
         }
-        list($term, $rest) = $this->getNextTermAndRest($logicString);
+        list($term, $rest) = $this->getNextTermAndRest($logic);
         if ($rest) {
             throw new \Exception('unknownParsingError');
         }
         return $term;
     }
 
+    /**
+    * Finds next term in given logic, and returns it along with the rest of the string that is yet to be processed
+    * @param string $logic A boolean expression text
+    * @return array Returns and array with two elments: the Term found, and the rest of string to process
+    */
     function getNextTermAndRest($logic) {
         $terms = [];
         $iterator = new Parser__Iterator($logic);
@@ -46,6 +55,9 @@ class Parser__Iterator implements \Iterator {
         $this->logic = $logic;
     }
 
+    /**
+    * @return Term
+    */
     function current() {
         return $this->term;
     }
@@ -108,7 +120,6 @@ class Parser__Iterator implements \Iterator {
             throw new ParserException('invalidLogicString'); // FIXME: provide better error feedback
         }
     }
-
 
     function setOperator($operator) {
         if ($this->operator !== null && $this->operator !== $operator) {
