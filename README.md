@@ -33,6 +33,30 @@ a AND b AND a         =>  a OR b
 a AND (b OR a)        =>  a AND b
 </pre>
 
+# Usage
+
+There's a composer config file in the project. But you can also use it manually by just cloning the project and including the autoload.php file:
+
+<pre>
+$ cat <<EOF | php
+<?php
+require_once('perfectly/autoload.php');
+
+\$logic = Perfectly\Parser::parse('((((D))) and ((B) OR A OR ((B))))');
+echo PHP_EOL . 'Simplified logic: ' . \$logic->get() . PHP_EOL;
+EOF
+
+Simplified logic: D AND (B OR A)
+</pre>
+
+# Testing suite
+
+There's a very simple test suit that can be used by developers, and it provides a more detailed list of examples.
+<pre>
+$ php tools/test.php
+Tests completed: 11 passed, 0 errors.
+</pre>
+
 # TODO
 
 * Properly detect when operator or term is used: "OR a b" is valid, translates to "a OR b"
