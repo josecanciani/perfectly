@@ -3,6 +3,8 @@
 
 A simple PHP library to parse and simplify boolean logic
 
+Created during a #Hackathon at https://www.avature.net/
+
 # Features
 
 ## Parsing
