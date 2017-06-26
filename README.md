@@ -38,14 +38,18 @@ a AND (b OR a)        =>  a AND b
 There's a composer config file in the project. But you can also use it manually by just cloning the project and including the autoload.php file:
 
 ```php
-$ cat <<EOF | php
 <?php
+
 require_once('perfectly/autoload.php');
 
-\$logic = Perfectly\Parser::parse('((((D))) and ((B) OR A OR ((B))))');
-echo PHP_EOL . 'Simplified logic: ' . \$logic->get() . PHP_EOL;
-EOF
+$logic = Perfectly\Parser::parse('((((D))) and ((B) OR A OR ((B))))');
 
+echo 'Simplified logic: ' . $logic->get() . PHP_EOL;
+```
+
+Will result in:
+
+```bash
 Simplified logic: D AND (B OR A)
 ```
 
