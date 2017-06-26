@@ -38,5 +38,4 @@ a AND (b OR a)        =>  a AND b
 * Properly detect when operator or term is used: "OR a b" is valid, translates to "a OR b"
 * Allow custom REGEXP for finding terms
 * Improve exceptions messages
-* Allow creating logics programatically, using objects instead of string terms
-** create an interface so objects can provide: a) a unique hash, and b) the string
+* Allow creating logics programatically, using objects instead of string terms (create an interface so objects can provide: a) a unique hash, and b) the string)
