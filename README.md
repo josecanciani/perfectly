@@ -37,7 +37,7 @@ a AND (b OR a)        =>  a AND b
 
 There's a composer config file in the project. But you can also use it manually by just cloning the project and including the autoload.php file:
 
-``
+```php
 $ cat <<EOF | php
 <?php
 require_once('perfectly/autoload.php');
@@ -47,15 +47,15 @@ echo PHP_EOL . 'Simplified logic: ' . \$logic->get() . PHP_EOL;
 EOF
 
 Simplified logic: D AND (B OR A)
-``
+```
 
 # Testing suite
 
 There's a very simple test suit that can be used by developers, and it provides a more detailed list of examples.
-<pre>
+```bash
 $ php tools/test.php
 Tests completed: 11 passed, 0 errors.
-</pre>
+```
 
 # TODO
 
