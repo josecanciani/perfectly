@@ -1,0 +1,30 @@
+{
+    "name": "josecanciani/perfectly",
+    "description": " Perfectly Logic is a simple boolean logic parser and simplifier ",
+    "version": "0.0.1",
+    "type": "library",
+    "keywords": ["boolean", "logic"],
+    "homepage": "https://github.com/josecanciani/perfectly",
+    "time": "2017-06-25",
+    "license": "GPLv3",
+    "authors": [
+        {
+            "name": "Jose Canciani",
+            "email": "jose.canciani@avature.net",
+            "homepage": "https://medium.com/@josecanciani"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/josecanciani/perfectly/issues",
+        "source": "https://github.com/josecanciani/perfectly"
+    },
+    "autoload": {
+        "psr-4": {
+            "Perfectly\\": "./"
+        },
+        "psr-0": {
+            "Perfectly": "./"
+        },
+        "classmap": ["./"]
+    }
+}
