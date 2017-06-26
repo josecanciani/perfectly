@@ -10,11 +10,11 @@ class Parser {
     * @param string $logic A boolean expression text
     * @return Term
     */
-    function parse($logic) {
+    static function parse($logic) {
         if (!is_string($logic) || !$logic) {
             throw new \Exception('invalidStringTerm');
         }
-        list($term, $rest) = $this->getNextTermAndRest($logic);
+        list($term, $rest) = static::getNextTermAndRest($logic);
         if ($rest) {
             throw new \Exception('unknownParsingError');
         }
@@ -26,7 +26,7 @@ class Parser {
     * @param string $logic A boolean expression text
     * @return array Returns and array with two elments: the Term found, and the rest of string to process
     */
-    function getNextTermAndRest($logic) {
+    static function getNextTermAndRest($logic) {
         $terms = [];
         $iterator = new Parser__Iterator($logic);
         foreach ($iterator as $term) {

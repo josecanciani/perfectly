@@ -29,9 +29,8 @@ try {
         ['logic' => 'A and (B or A)', 'expected' => 'A AND B'],
         ['logic' => 'A or (B and A)', 'expected' => 'A OR B']
     ];
-    $parser = new Perfectly\Parser();
     foreach ($tests as $test) {
-        $logic = $parser->parse($test['logic']);
+        $logic = Perfectly\Parser::parse($test['logic']);
         assertEqual($results, $logic->get(), $test['expected']);
     }
     echo "Tests completed: $results[ok] passed, $results[error] errors." . PHP_EOL;
